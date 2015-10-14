@@ -10,14 +10,18 @@
     <sprite>sprites\ch_wall_top</sprite>
     <sprite>sprites\player</sprite>
     <sprite>sprites\ch_key</sprite>
+    <sprite>sprites\ch_sky</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\ch_floor1</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\o_base_floor</object>
     <object>objects\o_base_wall</object>
     <object>objects\o_base_key</object>
     <object>objects\o_player</object>
+    <object>objects\o_base_sky</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\level1</room>
