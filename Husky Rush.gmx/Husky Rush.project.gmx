@@ -11,24 +11,45 @@
     <sprite>sprites\player</sprite>
     <sprite>sprites\ch_key</sprite>
     <sprite>sprites\ch_sky</sprite>
+    <sprite>sprites\transparent</sprite>
     <sprite>sprites\ch_door</sprite>
+    <sprites name="UI">
+      <sprite>sprites\ui_background</sprite>
+      <sprite>sprites\heart_full</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\ch_floor1</background>
+    <background>background\ch_tile_set</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\ui_draw_hearts.gml</script>
+    <script>scripts\gameover.gml</script>
+  </scripts>
   <objects name="objects">
-    <object>objects\o_base_floor</object>
     <object>objects\o_base_wall</object>
-    <object>objects\o_base_key</object>
     <object>objects\o_player</object>
     <object>objects\o_base_sky</object>
     <object>objects\o_base_door</object>
-    <object>objects\o_target_door</object>
-    <object>objects\o_input</object>
+    <object>objects\o_target</object>
+    <object>objects\o_enemy</object>
+    <object>objects\o_invisible_wall</object>
+    <objects name="collectables">
+      <objects name="CH">
+        <object>objects\ch_homework</object>
+      </objects>
+      <object>objects\o_collectable</object>
+    </objects>
+    <objects name="meta">
+      <object>objects\o_game</object>
+      <object>objects\o_input</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\level1</room>
+    <room>rooms\Centennial_Hall</room>
+    <room>rooms\Centennial_Hall_V2</room>
+    <room>rooms\Garvey</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
