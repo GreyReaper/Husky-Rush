@@ -8,6 +8,34 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//create inventory
+for(var i = 0; i &lt; 3; i++){
+    inventory[i,0] = 0; //status. Initial set to 0 - not found
+    inventory[i,1] = "generic_name"; //item name
+    inventory[i,2] = "generic_target"; //target name
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -51,88 +79,6 @@ if (g_keyDirectionIsReleased)
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="o_target">
-      <action>
-        <libid>1</libid>
-        <id>612</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_if_variable</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>hasKey</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>1</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>611</id>
-        <kind>6</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hasKey</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="4" ename="o_collectable">
@@ -225,6 +171,7 @@ if (g_keyDirectionIsReleased)
 
 _x = 12
 _y = 12
+_right_inverse_margin = 240;
 
 repeat (lives)
     {
@@ -232,7 +179,34 @@ repeat (lives)
     _x += 60;
     }
     
+//ui_draw_goals
+    var current_position_y = 12;
+    var text = "placeholder";
 
+for(var i = 0; i &lt; 3; i++){
+    var current_position_x = display_get_width() - _right_inverse_margin;
+    
+    if(o_player.inventory[i,0] == 0){
+        text = "Get " + o_player.inventory[i,1] + " from printer.";
+        draw_sprite(ch_key, 0, current_position_x, current_position_y);
+        current_position_x += 32 + 12;
+        draw_text(current_position_x, current_position_y, text);
+    
+    } else if (o_player.inventory[i,0] == 1) {
+        text = "Take " + o_player.inventory[i,1] + " to " + o_player.inventory[i,2] + ".";
+        draw_sprite(ch_key, 0, current_position_x, current_position_y);
+        current_position_x += 32 + 12;
+        draw_text(current_position_x, current_position_y, text);
+    } else if (o_player.inventory[i,0] == 2) {
+        text = o_player.inventory[i,1] + " to " + o_player.inventory[i,2] + " complete!";
+        draw_sprite(ch_key, 0, current_position_x, current_position_y);
+        current_position_x += 32 + 12;
+        draw_text(current_position_x, current_position_y, text);
+    }
+    
+    
+    current_position_y = 12;
+}
 </string>
           </argument>
         </arguments>

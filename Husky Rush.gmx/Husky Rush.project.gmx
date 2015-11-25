@@ -48,8 +48,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\Centennial_Hall</room>
-    <room>rooms\Centennial_Hall_V2</room>
     <room>rooms\Garvey</room>
+    <room>rooms\Centennial_Hall_V2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
